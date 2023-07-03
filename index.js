@@ -1,15 +1,19 @@
-require('dotenv').config();  // Load Env
+require('dotenv').config({path : './Process.env'});  // Load Env
 const express = require('express');
 const db = require('./config/mongoose');
+
+
 const port = process.env.PORT || 8000;;
 const app = express();
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
-const cors = require('cors')
+const cors = require('cors');
+const { config } = require('dotenv');
 app.use(express.urlencoded());
 app.use(express.static('assets'));
 app.use(expressLayouts);
 app.use(cors());
+
 // Extract style and scripts from sub pages into the layout
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
